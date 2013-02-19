@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+<head>
+<title>Sprite sample - jgame.js</title>
+<script type="text/javascript" src="js/gl-matrix-min.js"></script>
+<script type="text/javascript" src="js/jgame.js"></script>
+<script type="text/javascript">
+window.onload = function() {
+	var game = new Game(480, 480, RenderTransferMode.Direct, "WebGLRenderer");
+	game.preload({chara: "chara.png"});
+	game.loaded.handle(function() {
+		var sprite = new Sprite(32, 32, game.r("chara"));
+		var orgSp = sprite.createSprite();
+		for (var i=0; i<100; i++) {
+			var sp = sprite.createSprite();
+			sp.image = orgSp.image;
+			game.currentScene.append(sp);
+			sp.moveTo(
+				Math.floor(Math.random() * (480-16)),
+				Math.floor(Math.random() * (480-16))
+			);
+		}
+		game.update.handle(function(t) {
+			for (var i=0; i<game.currentScene.layers.root.entities.length; i++) {
+				if (i<30) {
+					game.currentScene.layers.root.entities[i].moveBy(30*t/1000, 0);
+				} else if (i<60) {
+					game.currentScene.layers.root.entities[i].moveBy(-30*t/1000, 0);
+				} else if (i<80) {
+					game.currentScene.layers.root.entities[i].moveBy(0, 30*t/1000);
+				} else {
+					game.currentScene.layers.root.entities[i].moveBy(0, -30*t/1000);
+				}
+			}
+		});
+	});
+}
+
+</script>
+</head>
+<body>
+	<div id="fps_show"></div>
+</body>
+</html>
+	

@@ -1,0 +1,6 @@
+../../jgame.js/src/js/jgame.d.ts
+webgl.d.ts
+WebGL2dContext.ts
+WebGLRenderer.ts
+--out ../js/gl2d.js
+--declaration

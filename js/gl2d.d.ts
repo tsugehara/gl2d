@@ -1,0 +1,92 @@
+class WebGL2dContext implements CanvasRenderingContext2D {
+    public shadowOffsetX: number;
+    public lineWidth: number;
+    public miterLimit: number;
+    public canvas: HTMLCanvasElement;
+    public strokeStyle: any;
+    public font: string;
+    public globalAlpha: number;
+    public globalCompositeOperation: string;
+    public shadowOffsetY: number;
+    public fillStyle: any;
+    public lineCap: string;
+    public shadowBlur: number;
+    public textAlign: string;
+    public textBaseline: string;
+    public shadowColor: string;
+    public lineJoin: string;
+    public gl: WebGLRenderingContext;
+    public textureMap: TextureMap;
+    public spriteShaderI: any;
+    public spriteShaderP: any;
+    public spriteVertex: any;
+    public spriteUV: any;
+    public colorLocation: any;
+    public width: number;
+    public height: number;
+    public p: CommonOffset;
+    static getContext(canvas: HTMLCanvasElement): WebGLRenderingContext;
+    public program: any;
+    public viewMat: any;
+    public projMat: any;
+    public uniformLocationsForSprite: any;
+    constructor(canvas: HTMLCanvasElement);
+    public updateMatrix(): void;
+    public createProgram(vs, fs): WebGLProgram;
+    public createShader(type, script);
+    public createVbo(data): WebGLBuffer;
+    public createTexture(image): WebGLTexture;
+    public getUniformLocationsForSprite(program, names): {};
+    public beforeImage: any;
+    public drawImage(image: HTMLElement, offsetX: number, offsetY: number, width?: number, height?: number, canvasOffsetX?: number, canvasOffsetY?: number, canvasImageWidth?: number, canvasImageHeight?: number): void;
+    public restore(): void;
+    public setTransform(m11: number, m12: number, m21: number, m22: number, dx: number, dy: number): void;
+    public save(): void;
+    public arc(x: number, y: number, radius: number, startAngle: number, endAngle: number, anticlockwise?: bool): void;
+    public measureText(text: string): TextMetrics;
+    public isPointInPath(x: number, y: number): bool;
+    public quadraticCurveTo(cpx: number, cpy: number, x: number, y: number): void;
+    public putImageData(imagedata: ImageData, dx: number, dy: number, dirtyX?: number, dirtyY?: number, dirtyWidth?: number, dirtyHeight?: number): void;
+    public rotate(angle: number): void;
+    public fillText(text: string, x: number, y: number, maxWidth?: number): void;
+    public translate(x: number, y: number): void;
+    public scale(x: number, y: number): void;
+    public createRadialGradient(x0: number, y0: number, r0: number, x1: number, y1: number, r1: number): CanvasGradient;
+    public lineTo(x: number, y: number): void;
+    public fill(): void;
+    public createPattern(image: HTMLElement, repetition: string): CanvasPattern;
+    public closePath(): void;
+    public rect(x: number, y: number, w: number, h: number): void;
+    public clip(): void;
+    public createImageData(imageDataOrSw: any, sh?: number): ImageData;
+    public clearRect(x: number, y: number, w: number, h: number): void;
+    public moveTo(x: number, y: number): void;
+    public getImageData(sx: number, sy: number, sw: number, sh: number): ImageData;
+    public fillRect(x: number, y: number, w: number, h: number): void;
+    public bezierCurveTo(cp1x: number, cp1y: number, cp2x: number, cp2y: number, x: number, y: number): void;
+    public transform(m11: number, m12: number, m21: number, m22: number, dx: number, dy: number): void;
+    public stroke(): void;
+    public strokeRect(x: number, y: number, w: number, h: number): void;
+    public strokeText(text: string, x: number, y: number, maxWidth?: number): void;
+    public beginPath(): void;
+    public arcTo(x1: number, y1: number, x2: number, y2: number, radius: number): void;
+    public createLinearGradient(x0: number, y0: number, x1: number, y1: number): CanvasGradient;
+    public clear(): void;
+}
+interface TextureMapValue {
+    src: HTMLElement;
+    texture: WebGLTexture;
+}
+class TextureMap {
+    public buf: TextureMapValue[];
+    constructor();
+    public add(image: HTMLElement, texture: WebGLTexture): WebGLTexture;
+    public get(image: HTMLElement): WebGLTexture;
+    public clear(): void;
+}
+class WebGLRenderer extends GameRenderer {
+    constructor(game: Game, container?: HTMLElement, transferMode?: RenderTransferMode);
+    static create2dContext(canvas: HTMLCanvasElement): CanvasRenderingContext2D;
+    public refresh(): void;
+    public render(): void;
+}
