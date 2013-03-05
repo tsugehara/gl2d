@@ -12,3 +12,7 @@ https://gist.github.com/szywon/91b49468eedb09aceaee
 
 
 すんません、まだ全然出来てないです。
+
+WebGL部分はほとんどglshooterさんからパ、、拝借しています。知識不足ですいません。
+
+https://github.com/daishihmr/glshooter
